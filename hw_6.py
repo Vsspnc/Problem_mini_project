@@ -12,11 +12,12 @@ def display_menu():
     print("3.Search Data")
     print("4.Delete Data")
     print("5.View All Data")
+    print("6.Exit ")
     print("---------------------------")
 
 
 def insert_data():
-    region = input("กรุณาเลือกภาค (ภาคเหนือ, ภาคกลาง, ภาคอีสาน, ภาคใต้): ")
+    region = input("กรุณาเลือกภาค (ภาคเหนือ, ภาคกลาง, ภาคอีสาน, ภาคใต้,ภาคตะวันตก,ภาคตะวันออก): ")
     if region in regions:
         province = input("กรุณาใส่ชื่อจังหวัดที่ต้องการเพิ่ม: ")
         if province not in regions[region]:
@@ -37,18 +38,30 @@ def delete_data():
     pass
 
 def View_alldata():
-    print(regions())
+    print("\n--- ข้อมูลจังหวัดทั้งหมด ---")
+    for region, provinces in regions.items():
+        print(f"{region}: {', '.join(provinces) if provinces else 'ไม่มีข้อมูล'}")
 
 def mainmenu():
-    display_menu()
-    choice_input = int(input("Enter your choice : "))
-    if choice_input == 1:
-        insert_data()
-    elif choice_input == 2:
-        update_data()
-    elif choice_input == 3:
-        serch_data()
-    elif choice_input == 4:
-        delete_data()
-    elif choice_input == 5:
-        View_alldata()
+    while True:
+        display_menu()
+        choice_input = str(input("Enter your choice : "))
+        if choice_input == "1":
+            insert_data()
+        elif choice_input == "2":
+            update_data()
+        elif choice_input == "3":
+            serch_data()
+        elif choice_input == "4":
+            delete_data()
+        elif choice_input == "5":
+            View_alldata()
+        elif choice_input == "6":
+            print("Exit Program!")
+            break
+        else:
+            print("กรุณาเลือก Choice ใหม่")
+
+
+if __name__ == "__main__":
+    mainmenu()
