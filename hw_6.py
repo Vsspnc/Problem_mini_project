@@ -32,10 +32,19 @@ def update_data():
     pass
 
 def serch_data():
-    pass
+    region = input("กรุณาใส่ภาคของท่าน: ")
+    if region in regions and len(regions[region]) > 0:
+        print(regions[region])
+    else:
+        print("ไม่พบข้อมูล")
 
 def delete_data():
-    pass
+    province = input("กรุณาใส่จังหวัดที่ต้องการลบ: ")
+    for region in regions:
+        if province in regions[region]:
+            regions[region].remove(province)
+            print(f"{province} ถูกลบออกจาก {region} เรียบร้อยแล้ว")
+            return
 
 def View_alldata():
     print("\n--- ข้อมูลจังหวัดทั้งหมด ---")
