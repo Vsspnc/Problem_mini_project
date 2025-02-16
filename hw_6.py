@@ -1,9 +1,10 @@
-regions = {"ภาคเหนือ":[],
-          "ภาคกลาง" : [],
-          "ภาคอีสาน" :[],
-          "ภาคตะวันตก": [],
-          "ภาคตะวันออก": [],
-          "ภาคใต้": []}
+regions = {"ภาคเหนือ": [],
+           "ภาคกลาง": [],
+           "ภาคอีสาน": [],
+           "ภาคตะวันตก": [],
+           "ภาคตะวันออก": [],
+           "ภาคใต้": []}
+
 
 def display_menu():
     print("\n---------Main menu---------")
@@ -17,7 +18,32 @@ def display_menu():
 
 
 def insert_data():
-    region = input("กรุณาเลือกภาค (ภาคเหนือ, ภาคกลาง, ภาคอีสาน, ภาคใต้,ภาคตะวันตก,ภาคตะวันออก): ")
+    region = input(
+        f"--== กรุณาใส่ภาคที่ต้องการค้นหา ==--\n"
+        f"1. ภาคเหนือ\n"
+        f"2. ภาคกลาง\n"
+        f"3. ภาคอีสาน\n"
+        f"4. ภาคตะวันตก\n"
+        f"5. ภาคตะวันออก\n"
+        f"6. ภาคใต้\n"
+        f"เลือก: "
+    )
+    match region:
+        case "1":
+            region = "ภาคเหนือ"
+        case "2":
+            region = "ภาคกลาง"
+        case "3":
+            region = "ภาคอีสาน"
+        case "4":
+            region = "ภาคตะวันตก"
+        case "5":
+            region = "ภาคตะวันออก"
+        case "6":
+            region = "ภาคใต้"
+        case _:
+            print("ไม่พบข้อมูล")
+            return
     if region in regions:
         province = input("กรุณาใส่ชื่อจังหวัดที่ต้องการเพิ่ม: ")
         if province not in regions[region]:
@@ -28,6 +54,7 @@ def insert_data():
     else:
         print("ไม่มีภาคนี้ในระบบ")
 
+
 def update_data():
     province_edit = input("กรุณาใส่จังหวัดที่ต้องการแก้ไข: ")
     for region in regions:
@@ -35,16 +62,50 @@ def update_data():
             province_new = input("กรุณาใส่ชื่อจังหวัดใหม่: ")
             regions[region].remove(province_edit)
             regions[region].append(province_new)
-            print(f"{province_edit} ถูกแก้ไขเป็น {province_new} ใน {region} เรียบร้อยแล้ว")
+            print(
+                f"{province_edit} ถูกแก้ไขเป็น {province_new} ใน {region} เรียบร้อยแล้ว")
             return
     print("ไม่พบข้อมูลที่ต้องการแก้ไข")
 
+
 def serch_data():
-    region = input("กรุณาใส่ภาคของท่าน: ")
+    region = input(
+        f"--== กรุณาใส่ภาคที่ต้องการค้นหา ==--\n"
+        f"1. ภาคเหนือ\n"
+        f"2. ภาคกลาง\n"
+        f"3. ภาคอีสาน\n"
+        f"4. ภาคตะวันตก\n"
+        f"5. ภาคตะวันออก\n"
+        f"6. ภาคใต้\n"
+        f"เลือก: "
+    )
+    match region:
+        case "1":
+            region = "ภาคเหนือ"
+        case "2":
+            region = "ภาคกลาง"
+        case "3":
+            region = "ภาคอีสาน"
+        case "4":
+            region = "ภาคตะวันตก"
+        case "5":
+            region = "ภาคตะวันออก"
+        case "6":
+            region = "ภาคใต้"
+        case _:
+            print("ไม่พบข้อมูล")
+            return
     if region in regions and len(regions[region]) > 0:
-        print(regions[region])
+        print(region)
+        length = len(regions[region])
+        for index, province in enumerate(regions[region]):
+            if index != length - 1:
+                print(province, end=", ")
+            else:
+                print(province)
     else:
         print("ไม่พบข้อมูล")
+
 
 def delete_data():
     province = input("กรุณาใส่จังหวัดที่ต้องการลบ: ")
@@ -55,10 +116,12 @@ def delete_data():
             return
     print("ไม่พบข้อมูลที่ต้องการลบ")
 
+
 def View_alldata():
     print("\n--- ข้อมูลจังหวัดทั้งหมด ---")
     for region, provinces in regions.items():
         print(f"{region}: {', '.join(provinces) if provinces else 'ไม่มีข้อมูล'}")
+
 
 def mainmenu():
     while True:
