@@ -12,6 +12,7 @@ def display_menu():
     print("5.View All Data")
     print("---------------------------")
 
+
 def insert_data():
     region = input("กรุณาเลือกภาค (ภาคเหนือ, ภาคกลาง, ภาคอีสาน, ภาคใต้): ")
     if region in regions:
@@ -24,6 +25,15 @@ def insert_data():
     else:
         print("ไม่มีภาคนี้ในระบบ")
 
+def update_data():
+    pass
+
+def serch_data():
+    pass
+
+def delete_data():
+    pass
+
 def View_alldat():
     print(regions())
 
@@ -31,4 +41,7 @@ def mainmenu():
     display_menu()
     choice_input = int(input("Enter your choice : "))
     if choice_input == 1:
+        display_menu()
+    elif choice_input == 2:
+        update_data()
         
