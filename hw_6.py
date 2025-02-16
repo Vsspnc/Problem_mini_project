@@ -1,4 +1,9 @@
-def mainmenu():
+regions = {"ภาคเหนือ":[],
+          "ภาคกลาง" : [],
+          "ภาคอีสาน" :[],
+          "ภาคใต้": []}
+
+def display_menu():
     print("\n---------Main menu---------")
     print("1.Insert Data")
     print("2.Update Data")
@@ -8,9 +13,22 @@ def mainmenu():
     print("---------------------------")
 
 def insert_data():
-    pass
+    region = input("กรุณาเลือกภาค (ภาคเหนือ, ภาคกลาง, ภาคอีสาน, ภาคใต้): ")
+    if region in regions:
+        province = input("กรุณาใส่ชื่อจังหวัดที่ต้องการเพิ่ม: ")
+        if province not in regions[region]:
+            regions[region].append(province)
+            print(f"เพิ่มจังหวัด {province} ใน {region} เรียบร้อยแล้ว")
+        else:
+            print(f"จังหวัด {province} มีอยู่ใน {region} แล้ว")
+    else:
+        print("ไม่มีภาคนี้ในระบบ")
 
 def View_alldat():
-    pass
+    print(regions())
 
-mainmenu()
+def mainmenu():
+    display_menu()
+    choice_input = int(input("Enter your choice : "))
+    if choice_input == 1:
+        
