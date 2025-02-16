@@ -29,7 +29,15 @@ def insert_data():
         print("ไม่มีภาคนี้ในระบบ")
 
 def update_data():
-    pass
+    province_edit = input("กรุณาใส่จังหวัดที่ต้องการแก้ไข: ")
+    for region in regions:
+        if province_edit in regions[region]:
+            province_new = input("กรุณาใส่ชื่อจังหวัดใหม่: ")
+            regions[region].remove(province_edit)
+            regions[region].append(province_new)
+            print(f"{province_edit} ถูกแก้ไขเป็น {province_new} ใน {region} เรียบร้อยแล้ว")
+            return
+    print("ไม่พบข้อมูลที่ต้องการแก้ไข")
 
 def serch_data():
     region = input("กรุณาใส่ภาคของท่าน: ")
@@ -45,6 +53,7 @@ def delete_data():
             regions[region].remove(province)
             print(f"{province} ถูกลบออกจาก {region} เรียบร้อยแล้ว")
             return
+    print("ไม่พบข้อมูลที่ต้องการลบ")
 
 def View_alldata():
     print("\n--- ข้อมูลจังหวัดทั้งหมด ---")
