@@ -34,14 +34,19 @@ def serch_data():
 def delete_data():
     pass
 
-def View_alldat():
+def View_alldata():
     print(regions())
 
 def mainmenu():
     display_menu()
     choice_input = int(input("Enter your choice : "))
     if choice_input == 1:
-        display_menu()
+        insert_data()
     elif choice_input == 2:
         update_data()
-        
+    elif choice_input == 3:
+        serch_data()
+    elif choice_input == 4:
+        delete_data()
+    elif choice_input == 5:
+        View_alldata()
